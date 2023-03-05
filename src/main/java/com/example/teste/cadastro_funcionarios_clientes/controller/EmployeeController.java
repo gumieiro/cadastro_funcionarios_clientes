@@ -1,31 +1,84 @@
 package com.example.teste.cadastro_funcionarios_clientes.controller;
 
-import java.util.List;
+import java.io.IOException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.teste.cadastro_funcionarios_clientes.model.Employee;
 import com.example.teste.cadastro_funcionarios_clientes.service.EmployeeService;
+import com.example.teste.cadastro_funcionarios_clientes.util.EmployeeExcelExporter;
+
+import jakarta.servlet.http.HttpServletResponse;
+
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/api/employees")
 public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
+    
+    @Autowired
+    private EmployeeExcelExporter employeeExcelExporter;
 
-    @GetMapping
-    public List<Employee> getEmployees() {
-        List<Employee> employeesDTO = employeeService.getAllEmployees();
-        return employeesDTO;
+    @GetMapping("/export")
+    public void exportEmployeesToExcel(HttpServletResponse response, @RequestParam(name = "page", required = false) Optional<Integer> page) throws IOException {
+        employeeExcelExporter.exportAllEmployeesToExcel(response, page);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
-        Employee employee = employeeService.getEmployeeById(id);
+    @GetMapping
+    public Page<Employee> getAllEmployees(@RequestParam("page") Optional<Integer> page) {
+        return employeeService.getAllEmployees(page);
+    }
+    
+    @GetMapping("/searchBy/name/{name}")
+    public Page<Employee> findAllEmployeesByName(String name, @RequestParam("page") Optional<Integer> page) {
+        return employeeService.getAllEmployeesByName(name, page);
+    }
+
+    @GetMapping("/searchBy/document/{document}")
+    public Page<Employee> findAllEmployeesByDocument(String document, @RequestParam("page") Optional<Integer> page) {
+        return employeeService.getAllEmployeesByDocument(document, page);
+    }
+
+    @GetMapping("/searchBy/postalCode/{postalCode}")
+    public Page<Employee> findAllEmployeesByPostalCode (String postalCode, @RequestParam("page") Optional<Integer> page) {
+        return employeeService.getAllEmployeesByPostalCode(postalCode, page);
+    }
+
+    @GetMapping("/searchBy/address/{address}")
+    public Page<Employee> findAllEmployeesByAddress (String address, @RequestParam("page") Optional<Integer> page) {
+        return employeeService.getAllEmployeesByAddress(address, page);
+    }
+
+    @GetMapping("/searchBy/addressNumber/{addressNumber}")
+    public Page<Employee> findAllEmployeesByAddressNumber (String addressNumber, @RequestParam("page") Optional<Integer> page) {
+        return employeeService.getAllEmployeesByAddressNumber(addressNumber, page);
+    }
+
+    @GetMapping("/searchBy/city/{city}")
+    public Page<Employee> findAllEmployeesByCity (String city, @RequestParam("page") Optional<Integer> page) {
+        return employeeService.getAllEmployeesByCity(city, page);
+    }
+
+    @GetMapping("/searchBy/state/{state}")
+    public Page<Employee> findAllEmployeesByState (String state, @RequestParam("page") Optional<Integer> page) {
+        return employeeService.getAllEmployeesByState(state, page);
+    }
+
+    @GetMapping("/searchBy/country/{country}")
+    public Page<Employee> findAllEmployeesByCountry (String country, @RequestParam("page") Optional<Integer> page) {
+        return employeeService.getAllEmployeesByCountry(country, page);
+    }
+
+    @GetMapping("/{employeeId}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long employeeId) {
+        Employee employee = employeeService.getEmployeeById(employeeId);
         if (employee == null) {
             return ResponseEntity.notFound().build();
         }
@@ -33,14 +86,14 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
-        Employee createdEmployee = employeeService.createEmployee(employee);
+    public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
+        Employee createdEmployee = employeeService.addEmployee(employee);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdEmployee);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
-        Employee updatedEmployee = employeeService.updateEmployee(id, employee);
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee Employee) {
+        Employee updatedEmployee = employeeService.updateEmployee(id, Employee);
         if (updatedEmployee == null) {
             return ResponseEntity.notFound().build();
         }
@@ -56,3 +109,4 @@ public class EmployeeController {
         return ResponseEntity.noContent().build();
     }
 }
+

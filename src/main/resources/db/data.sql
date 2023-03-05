@@ -1,11 +1,9 @@
-INSERT INTO users (name, email) VALUES
-    ('João', 'joao@teste.com'),
-    ('Maria', 'maria@teste.com');
+INSERT INTO employees (name, document, birthdate, postal_code, address, address_number, city, state, country)
+VALUES ('João Silva', '12345678901', '1990-01-01', '12345-678', 'Rua A, 123', '10', 'São Paulo', 'SP', 'Brasil'), 
+('Maria Souza', '98765432101', '1995-05-15', '54321-012', 'Rua B, 456', '20', 'Rio de Janeiro', 'RJ', 'Brasil'),
+('Pedro Santos', '55588877701', '1985-12-31', '11111-111', 'Rua C, 789', '30', 'Belo Horizonte', 'MG', 'Brasil');
 
-INSERT INTO customers (name, document, address, address_number, city, state, postal_code, country) VALUES
-    ('Pedro da Silva', '64274132013', 'Rua Tibúrcio de Sousa', '719-A', 'São Paulo','SP', '08140-000', 'Brasil'),
-    ('Rosa dos Santos', '81311301003', 'R. Dr. Falcão Filho', '121', 'São Paulo', 'SP', '01007-010', 'Brasil');
-
-INSERT INTO employees (name, document, address, address_number, city, state, postal_code, country) VALUES
-    ('Júlio Matias]', '34850092020', 'Rua Luís Cristofe', '23-A', 'São Paulo','SP', '08431-330', 'Brasil'),
-    ('Felipe Araúko', '76976837094', 'R. Maria Lúcia Schwerotner', '61', 'Nova Iguaçu', 'RJ', '26042-480', 'Brasil');
+INSERT INTO customers (name, document, postal_code, address, address_number, city, state, country)
+VALUES ('Ana Silva', '12345678901', '12345-678', 'Rua D, 456', '40', 'São Paulo', 'SP', 'Brasil'),
+('José Santos', '98765432101', '54321-012', 'Rua E, 789', '50', 'Rio de Janeiro', 'RJ', 'Brasil'),
+('Maria Silva', '12345678902', '12345-678', 'Rua F, 123', '10', 'São Paulo', 'SP', 'Brasil');
