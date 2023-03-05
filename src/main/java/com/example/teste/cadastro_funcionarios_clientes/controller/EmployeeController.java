@@ -37,42 +37,42 @@ public class EmployeeController {
     }
     
     @GetMapping("/searchBy/name/{name}")
-    public Page<Employee> findAllEmployeesByName(String name, @RequestParam("page") Optional<Integer> page) {
+    public Page<Employee> findAllEmployeesByName (@PathVariable String name, @RequestParam("page") Optional<Integer> page) {
         return employeeService.getAllEmployeesByName(name, page);
     }
 
     @GetMapping("/searchBy/document/{document}")
-    public Page<Employee> findAllEmployeesByDocument(String document, @RequestParam("page") Optional<Integer> page) {
+    public Page<Employee> findAllEmployeesByDocument (@PathVariable String document, @RequestParam("page") Optional<Integer> page) {
         return employeeService.getAllEmployeesByDocument(document, page);
     }
 
     @GetMapping("/searchBy/postalCode/{postalCode}")
-    public Page<Employee> findAllEmployeesByPostalCode (String postalCode, @RequestParam("page") Optional<Integer> page) {
+    public Page<Employee> findAllEmployeesByPostalCode (@PathVariable String postalCode, @RequestParam("page") Optional<Integer> page) {
         return employeeService.getAllEmployeesByPostalCode(postalCode, page);
     }
 
     @GetMapping("/searchBy/address/{address}")
-    public Page<Employee> findAllEmployeesByAddress (String address, @RequestParam("page") Optional<Integer> page) {
+    public Page<Employee> findAllEmployeesByAddress (@PathVariable String address, @RequestParam("page") Optional<Integer> page) {
         return employeeService.getAllEmployeesByAddress(address, page);
     }
 
     @GetMapping("/searchBy/addressNumber/{addressNumber}")
-    public Page<Employee> findAllEmployeesByAddressNumber (String addressNumber, @RequestParam("page") Optional<Integer> page) {
+    public Page<Employee> findAllEmployeesByAddressNumber (@PathVariable String addressNumber, @RequestParam("page") Optional<Integer> page) {
         return employeeService.getAllEmployeesByAddressNumber(addressNumber, page);
     }
 
     @GetMapping("/searchBy/city/{city}")
-    public Page<Employee> findAllEmployeesByCity (String city, @RequestParam("page") Optional<Integer> page) {
+    public Page<Employee> findAllEmployeesByCity (@PathVariable String city, @RequestParam("page") Optional<Integer> page) {
         return employeeService.getAllEmployeesByCity(city, page);
     }
 
     @GetMapping("/searchBy/state/{state}")
-    public Page<Employee> findAllEmployeesByState (String state, @RequestParam("page") Optional<Integer> page) {
+    public Page<Employee> findAllEmployeesByState (@PathVariable String state, @RequestParam("page") Optional<Integer> page) {
         return employeeService.getAllEmployeesByState(state, page);
     }
 
     @GetMapping("/searchBy/country/{country}")
-    public Page<Employee> findAllEmployeesByCountry (String country, @RequestParam("page") Optional<Integer> page) {
+    public Page<Employee> findAllEmployeesByCountry (@PathVariable String country, @RequestParam("page") Optional<Integer> page) {
         return employeeService.getAllEmployeesByCountry(country, page);
     }
 

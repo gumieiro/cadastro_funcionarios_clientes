@@ -38,42 +38,42 @@ public class CustomerController {
     }
 
     @GetMapping("/searchBy/name/{name}")
-    public Page<Customer> findAllCustomersByName(String name, @RequestParam(name = "page", required = false) Optional<Integer> page) {
+    public Page<Customer> findAllCustomersByName(@PathVariable String name, @RequestParam(name = "page", required = false) Optional<Integer> page) {
         return customerService.getAllCustomersByName(name, page);
     }
 
     @GetMapping("/searchBy/document/{document}")
-    public Page<Customer> findAllCustomersByDocument(String document, @RequestParam(name = "page", required = false) Optional<Integer> page) {
+    public Page<Customer> findAllCustomersByDocument(@PathVariable String document, @RequestParam(name = "page", required = false) Optional<Integer> page) {
         return customerService.getAllCustomersByDocument(document, page);
     }
 
     @GetMapping("/searchBy/postalCode/{postalCode}")
-    public Page<Customer> findAllCustomersByPostalCode (String postalCode, @RequestParam(name = "page", required = false) Optional<Integer> page) {
+    public Page<Customer> findAllCustomersByPostalCode (@PathVariable String postalCode, @RequestParam(name = "page", required = false) Optional<Integer> page) {
         return customerService.getAllCustomersByPostalCode(postalCode, page);
     }
 
     @GetMapping("/searchBy/address/{address}")
-    public Page<Customer> findAllCustomersByAddress (String address, @RequestParam(name = "page", required = false) Optional<Integer> page) {
+    public Page<Customer> findAllCustomersByAddress (@PathVariable String address, @RequestParam(name = "page", required = false) Optional<Integer> page) {
         return customerService.getAllCustomersByAddress(address, page);
     }
 
     @GetMapping("/searchBy/addressNumber/{addressNumber}")
-    public Page<Customer> findAllCustomersByAddressNumber (String addressNumber, @RequestParam(name = "page", required = false) Optional<Integer> page) {
+    public Page<Customer> findAllCustomersByAddressNumber (@PathVariable String addressNumber, @RequestParam(name = "page", required = false) Optional<Integer> page) {
         return customerService.getAllCustomersByAddressNumber(addressNumber, page);
     }
 
     @GetMapping("/searchBy/city/{city}")
-    public Page<Customer> findAllCustomersByCity (String city, @RequestParam(name = "page", required = false) Optional<Integer> page) {
+    public Page<Customer> findAllCustomersByCity (@PathVariable String city, @RequestParam(name = "page", required = false) Optional<Integer> page) {
         return customerService.getAllCustomersByCity(city, page);
     }
 
     @GetMapping("/searchBy/state/{state}")
-    public Page<Customer> findAllCustomersByState (String state, @RequestParam(name = "page", required = false) Optional<Integer> page) {
+    public Page<Customer> findAllCustomersByState (@PathVariable String state, @RequestParam(name = "page", required = false) Optional<Integer> page) {
         return customerService.getAllCustomersByState(state, page);
     }
 
     @GetMapping("/searchBy/country/{country}")
-    public Page<Customer> findAllCustomersByCountry (String country, @RequestParam(name = "page", required = false) Optional<Integer> page) {
+    public Page<Customer> findAllCustomersByCountry (@PathVariable String country, @RequestParam(name = "page", required = false) Optional<Integer> page) {
         return customerService.getAllCustomersByCountry(country, page);
     }
 
